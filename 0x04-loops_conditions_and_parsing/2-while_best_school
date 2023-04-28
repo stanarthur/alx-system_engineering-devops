@@ -1,8 +1,10 @@
- #!/usr/bin/env bash
-#Creating a script that uses a while loop
-x=1
-while [ $x -le 10 ]
+#!/usr/bin/env bash
+#Creating a script that uses a while loop that
+#Best School
+
+g=1
+while [ $g -le 10 ]
 do
     echo "Best School"
-    x=$(( x + 1 ))
+    g=$(( g + 1 ))
 done
