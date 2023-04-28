@@ -1,0 +1,11 @@
+#!/bin/bash
+# Start the process in the background
+./4-to_infinity_and_beyond &
+
+# Get the process ID (PID) of the backgrounded process
+PID=$!
+sleep 20
+kill $PID
+
+echo "Process terminated"
+
