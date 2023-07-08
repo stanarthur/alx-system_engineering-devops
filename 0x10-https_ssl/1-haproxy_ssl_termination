@@ -39,7 +39,7 @@ frontend  switchsight-frontend-http
 	http-request set-header X-Forwarded-Proto http
         default_backend switchsight-backend
 
-frontend ehoneah-frontend-https
+frontend switchsight-frontend-https
 	bind *:443 ssl crt /etc/haproxy/certs/www.switchsight.tech.pem
 	http-request set-header X-Forwarded-Proto https
 	default_backend switchsight-backend
