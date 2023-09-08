@@ -35,12 +35,12 @@ listen hbnb
 
 frontend www-http
     bind   0.0.0.0:80
-    reqadd X-Forwarded-Proto:\ http
+    reqadd X-Forwarded-Proto http
     default_backend www-backend
 
 frontend www-https
     bind   0.0.0.0:443 ssl crt /etc/haproxy/certs/www.switchsight.tech.pem
-    reqadd X-Forwarded-Proto:\ https
+    reqadd X-Forwarded-Proto https
     acl letsencrypt-acl path_beg /.well-known/acme-challenge/
     use_backend letsencrypt-backend if letsencrypt-acl
     default_backend www-backend
