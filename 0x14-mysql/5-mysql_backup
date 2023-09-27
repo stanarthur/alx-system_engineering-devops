@@ -1,32 +1,5 @@
 #!/bin/bash
 # Script to create a compressed MySQL dump
 
-# Check if the MySQL password is provided as an argument
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 <mysql_password>"
-    exit 1
-fi
-
-# Define the MySQL password
-mysql_password="$1"
-
-# Create a temporary directory for the backup
-backup_dir="/tmp/mysql_backup"
-mkdir -p "$backup_dir"
-
-# Generate the current date in the desired format (day-month-year)
-current_date=$(date +'%d-%m-%Y')
-
-# Define the backup file name
-backup_file="$backup_dir/$current_date.tar.gz"
-
-# Perform the MySQL dump and create the compressed archive
-mysqldump --all-databases -u root -p"$mysql_password" > "$backup_dir/backup.sql"
-tar -czvf "$backup_file" -C "$backup_dir" backup.sql
-
-# Remove the uncompressed SQL backup file
-rm "$backup_dir/backup.sql"
-
-# Display the path to the created backup file
-echo "Backup completed. Backup file: $backup_file"
-
+mysqldump --all-databases -u root -p"$1" > backup.sql
+tar -czvf "$(date '+%d-%m-%Y').tar.gz" backup.sql
